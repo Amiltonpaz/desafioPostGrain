@@ -2,6 +2,9 @@ export const schedules = {
   status: 'success',
   start_date: '2021-02-28T03:00:00+0000',
   end_date: '2021-03-31T02:59:59+0000',
+  type: 'feed',
+  image_url: "",
+  id: 1,
   data: [
     {
       id: 62512642,
@@ -142,7 +145,7 @@ export const channels = [
       full_name: 'frodo bolseiro',
       is_private: false,
       profile_pic_url:
-        'https://scontent-lhr8-1.cdninstagram.com/v/t51.2885-19/s150x150/82155853_495819618006168_2122337653864005632_n.jpg?tp=1&_nc_ht=scontent-lhr8-1.cdninstagram.com&_nc_ohc=a825I9qCm68AX_rao5-&ccb=7-4&oh=7fc2bb2204e3d74e41dad4bb7afb4a76&oe=608C68B9&_nc_sid=a9513d',
+        'https://media.linklist.bio/avatars/ff3021dcb48b8560e69a842b22034989.jpg',
       profile_pic_id: '2226409004837873329_28449666129',
       is_verified: false,
       has_anonymous_profile_picture: false,
@@ -270,7 +273,7 @@ export const channels = [
       full_name: 'Gandalf do Sertão',
       is_private: false,
       profile_pic_url:
-        'https://scontent-sjc3-1.cdninstagram.com/v/t51.2885-19/s150x150/50790055_395297557698545_3563850225976082432_n.jpg?tp=1&_nc_ht=scontent-sjc3-1.cdninstagram.com&_nc_ohc=02nyJhluxWYAX-YFtlv&ccb=7-4&oh=a11120c9a8f69c992440a8ac48a6d011&oe=608E5156&_nc_sid=a9513d',
+        'https://media.linklist.bio/avatars/4377e8efebb2316866f4bfa93ebe549e.jpg',
       profile_pic_id: '1973459391250053171_11050249559',
       is_verified: false,
       has_anonymous_profile_picture: false,
@@ -286,7 +289,7 @@ export const channels = [
         entities: [],
       },
       biography_product_mentions: [],
-      external_url: '',
+      external_url: 'https://linklist.bio/gandalfsertanejo',
       can_boost_post: false,
       can_see_organic_insights: false,
       show_insights_terms: false,
@@ -399,7 +402,7 @@ export const channels = [
       full_name: 'Lifeline',
       is_private: false,
       profile_pic_url:
-        'https://scontent-sjc3-1.cdninstagram.com/v/t51.2885-19/s150x150/118231682_935421876952376_3673832853711561041_n.jpg?tp=1&_nc_ht=scontent-sjc3-1.cdninstagram.com&_nc_ohc=pR--uRxWRDUAX-IO8os&ccb=7-4&oh=d5c338927afd7d4b83c831e0322e6104&oe=608DCBD6&_nc_sid=a9513d',
+        'https://media.linklist.bio/avatars/3c2a535e34878f12ffd0682bbb1b5236.jpg',
       profile_pic_id: '2384403504461500972_40294319123',
       is_verified: false,
       has_anonymous_profile_picture: false,
@@ -414,7 +417,7 @@ export const channels = [
         entities: [],
       },
       biography_product_mentions: [],
-      external_url: '',
+      external_url: 'https://linklist.bio/lifelinebregosa',
       has_biography_translation: true,
       can_boost_post: false,
       can_see_organic_insights: false,
@@ -532,7 +535,7 @@ export const channels = [
       full_name: 'My T-shirt 77',
       is_private: false,
       profile_pic_url:
-        'https://scontent-sjc3-1.cdninstagram.com/v/t51.2885-19/s150x150/57160296_286873902234976_7422085219886301184_n.jpg?tp=1&_nc_ht=scontent-sjc3-1.cdninstagram.com&_nc_ohc=zV3WYsFGiEsAX8hgefo&ccb=7-4&oh=35b89190832d4c2affb9c5ff97dfbf4e&oe=608CB376&_nc_sid=a9513d',
+        'https://media.linklist.bio/avatars/02e441efe8f91a05ce48d5a0a6e1d4f3.png',
       profile_pic_id: '2030105459894927044_7579399388',
       is_verified: false,
       has_anonymous_profile_picture: false,
@@ -562,7 +565,7 @@ export const channels = [
         ],
       },
       biography_product_mentions: [],
-      external_url: 'http://myt-shirt-stote.myshopify.com/',
+      external_url: 'https://linklist.bio/myt-shirt-store',
       external_lynx_url:
         'https://l.instagram.com/?u=http%3A%2F%2Fmyt-shirt-stote.myshopify.com%2F&e=ATNu8RvEU40IqFrLeeZK-Sv9TjeIzUfLCPAWh1jjoSqPEAEHD5IywcxZcW8LivcjBgrbQ-vFAaR0Gog0545fHFsXX7M3KTWW0ANtmA&s=1',
       has_biography_translation: true,

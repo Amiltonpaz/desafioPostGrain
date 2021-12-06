@@ -1,80 +1,44 @@
-import {
-  InMemoryDbService,
-  RequestInfo,
-  ResponseOptions,
-  STATUS,
-} from 'angular-in-memory-web-api';
-import { schedules, channels } from './fake-api';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { Channel, Schedule } from './interfaces/schedule';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { PostChannel } from './post-schedule/classes/channel';
 
-export class ScheduleAPIService implements InMemoryDbService {
-  private schedules: any = [];
 
-  constructor() {
-    this.schedules = schedules;
+
+@Injectable()
+
+export class ScheduleAPIService{
+
+  private schedules: Schedule[] = [];
+  private channels: Channel[] = [];
+  private API_schedules = 'http://localhost:3000/schedules';
+  private API_channels = 'http://localhost:3000/channels';
+
+  constructor(private http: HttpClient) {
+
   }
 
-  createDb() {
-    return {
-      schedules: this.schedules,
-      channels,
-    };
+
+  public getChannels(): Observable<PostChannel[]>{
+   return this.http.get<PostChannel[]>(this.API_channels);
   }
 
-  post(reqInfo: RequestInfo) {
-    const collectionName = reqInfo.collectionName;
-    console.log('post::', collectionName);
+  public getSchedules(): Observable<Schedule[]>{
 
-    if (collectionName === 'schedules') {
-      return this.createSchedule(reqInfo);
-    }
-
-    return undefined;
+    return  this.http.get<Schedule[]>(this.API_schedules);
   }
 
-  private createSchedule(reqInfo) {
-    const body = reqInfo.utils.getJsonBody(reqInfo.req);
+  public postSchedule(schedule: Schedule): Observable<Schedule> {
 
-    console.log({ body });
-    this.schedules.data.push(scheduleFactory(body));
+    return this.http.post<Schedule>(this.API_schedules, schedule).pipe(
+      tap(() => {
 
-    const options: ResponseOptions = {
-      body: { data: body },
-      status: STATUS.OK,
-      headers: reqInfo.headers,
-      url: reqInfo.url,
-    };
+      })
 
-    return reqInfo.utils.createResponse$(() => options);
+    );
   }
+
+
 }
-
-export const scheduleFactory = (data) => ({
-  id: Math.floor(Math.random() * 1000),
-  created_at: new Date(),
-  status: 'waiting',
-  now: false,
-  date: data.date,
-  caption: 'Lorem ipsom',
-  ig_code: null,
-  is_history: false,
-  is_album: false,
-  is_igtv: false,
-  is_reels: false,
-  ig_image_url: null,
-  type: data.type,
-  media_type: 'photo',
-  image: {
-    id: Math.floor(Math.random() * 1000),
-    filename: data.image.name,
-    is_album: false,
-    url:
-      'https://media.postgrain.com/uploads/images/2021/03/30/46519/9dbfcf76d9e30edbae8faef13f2ac700236ae25e.jpg',
-    type: null,
-  },
-  channel: {
-    id: data.channel.id,
-    username: data.channel.user.username,
-    profile_pic: data.channel.user.profile_pic,
-  },
-  socials: [],
-});

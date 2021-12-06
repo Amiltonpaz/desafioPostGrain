@@ -1,0 +1,112 @@
+
+
+<section fxFlex>
+  <h2 mat-dialog-title>Create New Post</h2>
+  <mat-dialog-content>
+    <div fxLayout="row">
+      <div fxLayout="column" fxFlex="50%">
+        <figure>
+          <img class="profile-thumbnail" src="{{ data['user'].profile_pic_url }}" width="60px">
+          <figcaption></figcaption>
+        </figure>
+        <div id="channel-name">@{{ data['user']?.username }}</div>
+      </div>
+
+      <div fxLayout="column">
+        <img [src]="srcImage" height="200px">
+      </div>
+    </div>
+    <mat-tab-group (selectedTabChange)="changeTab($event)">
+
+      <mat-tab label="Novo post">
+        <div class="center">
+          <ngx-file-drop
+            dropZoneClassName="drop-zone"
+            dropZoneLabel="Arraste o arquivo para cá"
+            multiple="false"
+            accept=".jpg,.jpeg,.png,.gif"
+            (onFileDrop)="uploadFile($event)"
+          >
+            <ng-template
+              ngx-file-drop-content-tmp
+              let-openFileSelector="openFileSelector"
+            >
+
+              <button mat-raised-button (click)="openFileSelector()">
+                Browse Files
+              </button>
+            </ng-template>
+          </ngx-file-drop>
+          <div class="upload-table">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                </tr>
+              </thead>
+              <tbody class="upload-name-style">
+                <tr *ngFor="let item of files; let i = index">
+                  <td>
+                    <strong>{{ item.relativePath }}</strong>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Novo Story">
+        <div class="center">
+          <ngx-file-drop
+            dropZoneLabel="Drop files here"
+            (onFileDrop)="uploadFile($event)"
+          >
+            <ng-template
+              ngx-file-drop-content-tmp
+              let-openFileSelector="openFileSelector"
+            >
+              Image
+              <button type="button" (click)="openFileSelector()">
+                Browse Files
+              </button>
+            </ng-template>
+          </ngx-file-drop>
+
+          <div class="upload-table">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Image Name</th>
+                </tr>
+              </thead>
+              <tbody class="upload-name-style">
+                <tr *ngFor="let item of files; let i = index">
+                  <td>
+                    <strong>{{ item.relativePath }}</strong>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button
+    mat-raised-button
+    matTooltip="cancel post"
+    matTooltipPosition ="below"
+    matTooltipClass="tooltip-red" (click)="close()">Close</button>
+
+    <button
+    mat-raised-button
+    matTooltip="schedule post "
+    matTooltipPosition ="below"
+    matTooltipClass="tooltip-basic"
+    color="primary" (click)="schedule()" [disabled]="!files">Post</button>
+  </mat-dialog-actions>
+
+</section>
+

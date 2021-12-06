@@ -1,4 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
-
-html, body { height: 100%; }
+@import '../node_modules/@angular/material/prebuilt-themes/indigo-pink.css';
+html, body { height: 100%; background-color:#9980FA; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.fundo-modal {
+  background-color: #9980FA;
+}
+
+.tooltip-red {
+  background: #b71c1c;
+  font-size: 15px;
+}
+
+.tooltip-basic {
+  background: #3F51B5;
+  font-size: 15px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.snack-bar-success {
+  background-color: aquamarine;
+  color: aliceblue;
+}
+
+.snack-bar-success a {
+  color: blue;
+}
+
+.drop-zone {
+  border: 2px dotted #3F51B5;
+  background-color: #CCCCCC;
+  border-radius: 20px;
+}

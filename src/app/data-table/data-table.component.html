@@ -1,0 +1,47 @@
+
+
+
+<div fxFlex="row" fxFlexAlign="center">
+
+  <div class="table-title">
+    Agendamentos de {{ agendamentos?.start_date | date }} até
+    {{ dataAtual | date}}
+  </div>
+
+  <table fxFlexAlign="end" mat-table class="data-table mat-elevation-z24"
+  [dataSource]="fonte$" matSort aria-label="Elements">
+    <!-- Type Column -->
+    <ng-container matColumnDef="type">
+      <th class="titulos" mat-header-cell *matHeaderCellDef >Type</th>
+      <td mat-cell *matCellDef="let row">{{row?.type}}</td>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="status">
+      <th class="titulos" mat-header-cell *matHeaderCellDef >Status</th>
+      <td mat-cell *matCellDef="let row">{{row?.status}}</td>
+    </ng-container>
+
+    <!-- Image Column -->
+    <ng-container matColumnDef="image">
+      <th class="titulos" mat-header-cell *matHeaderCellDef>Image</th>
+      <td mat-cell *matCellDef="let row"><img src="{{row?.image_url}}" alt="" width="50px"></td>
+    </ng-container>
+
+    <!-- Channel Column -->
+    <ng-container matColumnDef="channel">
+      <th class="titulos" mat-header-cell *matHeaderCellDef>Channel</th>
+      <td mat-cell *matCellDef="let row">{{row.data[0]?.channel?.user.username}}</td>
+    </ng-container>
+
+    <!-- Date Column -->
+    <ng-container matColumnDef="date">
+      <th class="titulos" mat-header-cell *matHeaderCellDef>Date</th>
+      <td mat-cell *matCellDef="let row">{{row.data[0]?.created_at | date}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+</div>

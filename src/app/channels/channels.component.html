@@ -1,0 +1,92 @@
+<div Layout="row">
+  <p>
+    <mat-toolbar color="primary">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>PostSchedule - App</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+      </button>
+    </mat-toolbar>
+  </p>
+</div>
+
+<div Layout="row">
+  <header class="page-header" fxFlex="300px">
+      <nav class="nav navbar-nav navbar-profiles">
+        <div class="navbar-profiles-item-wrap">
+          <a *ngFor="let channel of channels" (click)="selectChannel(channel)">
+            <figure class="profile-thumbnail">
+              <div class="profile-thumbnail-avatar">
+                <img src="{{ channel.user.profile_pic_url }}"
+                matTooltip="click to select channel"
+                matTooltipPosition ="below"
+                matTooltipClass="tooltip-basic"/>
+              </div>
+            </figure>
+          </a>
+        </div>
+      </nav>
+  </header>
+</div>
+    <div Layout="row">
+
+      <section Layout="column" fxLayoutAlign="start" fxFlex=30%>
+        <div>
+          <figure id="img-detalhe" class="profile-thumbnail profile-name-details">
+            <img src="{{ selectedChannel['user']?.profile_pic_url }}" width="200px"/>
+            <figcaption class="profile-thumbnail-label">
+              <div class="fa-label-content" style="margin-top:20px;">
+                <div>@{{ selectedChannel['user']?.username }}</div>
+                <hr/>
+              </div>
+              <div class="profile-details">
+                <div class="profile-details__influencer-level ng-binding">
+                  {{ selectedChannel['user']?.follower_count }} Followers |
+                  {{ selectedChannel['user']?.following_count }} Following
+                </div>
+                <div class="profile-details">
+                  Profile url: <a class="link-url-profile" href="#" >{{ selectedChannel['user']?.external_url }}</a>
+                </div>
+                <div
+                  class="profile-details__business-info ng-binding ng-hide"
+                  *ngIf="selectedChannel['user']?.is_business"
+                >
+                 Business Profile
+                </div>
+                <div
+                  class="profile-details__business-info ng-binding ng-hide"
+                  *ngIf="!selectedChannel['user']?.is_business"
+                >
+                 Personal Profile
+                </div>
+              </div>
+            </figcaption>
+          </figure>
+          <div fxLayoutAlign="center">
+            <button mat-raised-button
+            matTooltip="create new Feed or Story"
+            matTooltipPosition ="above"
+            matTooltipClass="tooltip-basic"
+            color="primary" (click)="openModal()">New Post</button>
+          </div>
+        </div>
+      </section>
+      <section Layout="column" fxLayoutAlign.gt-xs="center" fxLayoutAlign.lt-lg="center"  fxFlex=70%>
+        <div>
+          <app-data-table></app-data-table>
+        </div>
+      </section>
+    </div>
+
+
+
+
+
+
+
