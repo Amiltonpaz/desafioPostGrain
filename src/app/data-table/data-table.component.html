@@ -1,7 +1,7 @@
 
 
 
-<div fxFlex="row" fxFlexAlign="center">
+<div *ngIf="fonte$" fxFlex="row" fxFlexAlign="center">
 
   <div class="table-title">
     Agendamentos de {{ agendamentos?.start_date | date }} até
